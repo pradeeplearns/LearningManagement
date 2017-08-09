@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="700.0" prefWidth="952.0"
+            xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="register.RegistrationController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="REGISTRATION" textAlignment="JUSTIFY">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </Label>
+            <HBox alignment="TOP_CENTER" prefHeight="38.0" prefWidth="952.0">
+               <children>
+                  <Label minWidth="200.0" text="UserName">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="tfUserName" prefHeight="31.0" prefWidth="212.0" promptText="Enter UserName">
+                     <tooltip>
+                        <Tooltip style="-fx-text-fill: white;" text="User Name is required to Login">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Tooltip>
+                     </tooltip>
+                  </TextField>
+               </children>
+               <effect>
+                  <Blend />
+               </effect>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="38.0" prefWidth="952.0">
+               <children>
+                  <Label minWidth="200.0" text="Full Name">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="tfFullName" prefHeight="31.0" prefWidth="212.0" promptText="Your FullName" />
+               </children>
+               <effect>
+                  <Blend />
+               </effect>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="38.0" prefWidth="952.0">
+               <children>
+                  <Label minWidth="200.0" text="Password">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <PasswordField fx:id="pfUserPassword" prefHeight="31.0" prefWidth="212.0" promptText="Enter Password" />
+               </children>
+               <effect>
+                  <Blend />
+               </effect>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="38.0" prefWidth="952.0">
+               <children>
+                  <Label minWidth="200.0" text="Retype Password">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <PasswordField fx:id="pfReUserPassword" prefHeight="31.0" prefWidth="212.0" promptText="ReType Password" />
+               </children>
+               <effect>
+                  <Blend />
+               </effect>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="38.0" prefWidth="952.0">
+               <children>
+                  <Label minWidth="200.0" text="Contact No.">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField prefHeight="31.0" prefWidth="212.0" promptText="Your Contact No" />
+               </children>
+               <effect>
+                  <Blend />
+               </effect>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="38.0" prefWidth="952.0">
+               <children>
+                  <Label minWidth="200.0" text="Email ID">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField prefHeight="31.0" prefWidth="212.0" promptText="Your Email ID" />
+               </children>
+               <effect>
+                  <Blend />
+               </effect>
+            </HBox>
+            <HBox alignment="TOP_CENTER" prefHeight="38.0" prefWidth="952.0">
+               <children>
+                  <Label minWidth="200.0" text="Profession">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField prefHeight="31.0" prefWidth="212.0" promptText="What do you do?" />
+               </children>
+               <effect>
+                  <Blend />
+               </effect>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="btnSignUp" mnemonicParsing="false" onAction="#btnRegistration" prefHeight="53.0" prefWidth="152.0" text="Signup">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Hyperlink fx:id="hlLogin" onAction="#hlLogin" text="Already Have an Account? Login">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Hyperlink>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

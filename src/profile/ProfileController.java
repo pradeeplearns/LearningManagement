@@ -24,6 +24,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -41,6 +43,7 @@ public class ProfileController implements Initializable {
   public AnchorPane profile;
   private PreparedStatement pst;
   private ResultSet rs;
+  public HBox boxy;
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
@@ -50,35 +53,56 @@ public class ProfileController implements Initializable {
   public void setupWindow(String userId) {
     Label welcome = new Label();
     welcome.setText("Welcome to your LMS");
-    welcome.setStyle("-fx-font-size: 20pt; -fx-font-weight: bold; -fx-text-fill: brown");
+    welcome.setStyle("-fx-font-size: 30pt; -fx-font-weight: bold; -fx-text-fill: brown");
 
     Label name = new Label("Name : ");
     Label user = new Label("Pradeep");
-
-    HBox hBox = new HBox(10);
-    hBox.setPadding(new Insets(20, 20, 20, 20));
-    hBox.getChildren().addAll(name, user);
+    name.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: black");
+    user.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: black");
 
     Label contact = new Label("Contact : ");
     Label number = new Label("9999988888");
+    contact.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: black");
+    number.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: black");
 
-    HBox hBox1 = new HBox(10);
-    hBox1.setPadding(new Insets(20, 20, 20, 20));
-    hBox1.getChildren().addAll(contact, number);
 
     Label email = new Label("Email : ");
     Label emailId = new Label("xyz@example.com");
-
-    HBox hBox2 = new HBox(10);
-    hBox2.setPadding(new Insets(20, 20, 20, 20));
-    hBox2.getChildren().addAll(email, emailId);
+    email.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: black");
+    emailId.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: black");
 
     Label profession = new Label("You are the : ");
     Label role = new Label("Engineer");
+    profession.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: black");
+    role.setStyle("-fx-font-size: 15pt; -fx-font-weight: bold; -fx-text-fill: black");
 
-    HBox hBox3 = new HBox(10);
-    hBox3.setPadding(new Insets(20, 20, 20, 20));
-    hBox3.getChildren().addAll(profession, role);
+    GridPane grid = new GridPane();
+    grid.add(name, 0, 0);
+    grid.add(user, 1, 0);
+    grid.add(contact, 0, 1);
+    grid.add(number, 1, 1);
+    grid.add(email, 0, 2);
+    grid.add(emailId, 1, 2);
+    grid.add(profession, 0, 3);
+    grid.add(role, 1, 3);
+
+    grid.setHgap(10);
+    grid.setVgap(10);
+    grid.minWidth(600);
+    grid.minHeight(400);
+
+    ImageView imageView = new ImageView(new Image("/image/man.png"));
+    imageView.minWidth(400);
+    imageView.minHeight(400);
+
+    HBox userD = new HBox(10);
+    userD.setPadding(new Insets(20, 20, 20, 20));
+    userD.getChildren().addAll(grid, imageView);
+
+    Label courseTitle = new Label();
+    courseTitle.setText("Please Select any Course for Learning!");
+    courseTitle.setStyle("-fx-font-size: 20pt; -fx-font-weight: bold; -fx-text-fill: brown");
+
     TilePane tile = null;
     try {
       tile = initProfile(userId);
@@ -89,13 +113,12 @@ public class ProfileController implements Initializable {
     VBox vBox = new VBox(10);
     vBox.setPadding(new Insets(20, 20, 20, 20));
 
-    vBox.getChildren().addAll(welcome, hBox, hBox1, hBox2, hBox3, tile);
+    vBox.getChildren().addAll(welcome, userD, courseTitle, tile);
+    vBox.setAlignment(Pos.CENTER);
+    vBox.minWidth(1000);
 
-    HBox boxy = new HBox(10);
     boxy.setAlignment(Pos.CENTER);
     boxy.getChildren().addAll(vBox);
-
-    profile.getChildren().addAll(boxy);
   }
 
   public TilePane initProfile(String userId) throws SQLException {

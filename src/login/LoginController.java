@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,7 +20,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -39,10 +37,6 @@ public class LoginController implements Initializable {
     @FXML
     private TextField tfUserName;
     @FXML
-    private Button btnUserNameTfClear;
-    @FXML
-    private Button btnPassFieldClear;
-    @FXML
     private PasswordField pfUserPassword;
 
     @FXML
@@ -53,10 +47,7 @@ public class LoginController implements Initializable {
     private PreparedStatement pst;
     private Connection con;
     private ResultSet rs;
-    @FXML
-    private AnchorPane apMother;
-    @FXML
-    private AnchorPane apDesignPane;
+
 
 //    DBProperties dBProperties = new DBProperties();
 //    String db = dBProperties.loadPropertiesFile();
@@ -80,43 +71,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void hlCreateAnAccount(ActionEvent event) throws IOException {
-        SqlConnection dbCon = new SqlConnection();
-        con = dbCon.connectDB();
-        dbCon.createDataBase();
-        if (con != null) {
-            try {
-                pst = con.prepareStatement("SELECT UsrName FROM "  + LMSConstants.dbase + ".Login ORDER BY Id ASC LIMIT 1");
-                rs = pst.executeQuery();
-                if (rs.next()) {
-                    apMother.setOpacity(0.7);
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Error");
-                    alert.setHeaderText("Error");
-                    alert.setContentText("You can't create an account without admin \n permission");
-                    alert.initStyle(StageStyle.UNDECORATED);
-                    Optional<ButtonType> result = alert.showAndWait();
-                    if (result.isPresent() && result.get() == ButtonType.OK) {
-                        apMother.setOpacity(1.0);
-                    }
-                    return;
-                }
-                con.close();
-                pst.close();
-                rs.close();
-                loadRegistration();
-
-            } catch (SQLException ex) {
-                Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error : Server Not Found");
-            alert.setContentText("Make sure your mysql is Start properly, \n");
-            alert.initStyle(StageStyle.UNDECORATED);
-            alert.showAndWait();
-        }
-
+        loadRegistration();
     }
 
     @FXML
@@ -214,7 +169,7 @@ public class LoginController implements Initializable {
     private void loadRegistration() {
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/register/Registration.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/register/registration.fxml"));
             Scene scene = new Scene(root);
             Stage nStage = new Stage();
             nStage.setScene(scene);

@@ -10,9 +10,11 @@ import dbconnection.SqlConnection;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -34,6 +36,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Users;
+import sun.util.calendar.CalendarUtils;
 
 /**
  * FXML Controller class
@@ -109,7 +112,14 @@ public class RegistrationController implements Initializable {
             con = dbCon.connectDB();
             PreparedStatement pst;
             if (con != null) {
-                pst = con.prepareStatement("INSERT INTO "+ LMSConstants.dbase +".Login VALUES (?, ?)");
+                pst = con.prepareStatement("INSERT INTO "+ LMSConstants.dbase +".Login(UsrName, Password) VALUES (?, ?)");
+                // create a java calendar instance
+//                Calendar calendar = Calendar.getInstance();
+
+                // get a java date (java.util.Date) from the Calendar instance.
+                // this java date will represent the current date, or "now".
+//                java.util.Date currentDate = calendar.getTime();
+
                 pst.setString(1, users.userName);
                 pst.setString(2, users.password);
                 pst.execute();
